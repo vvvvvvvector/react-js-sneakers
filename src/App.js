@@ -5,18 +5,22 @@ import Drawer from './components/Drawer';
 
 import React from 'react';
 
-const arr = [
-  { title: "Мужские Кроссовки Nike Blazer Mid Suede", price: 12999, imageURL: "/images/sneakersImages/1.jpg" },
-  { title: "Мужские Кроссовки Nike Air Max 270", price: 15999, imageURL: "/images/sneakersImages/2.jpg" },
-  { title: "Мужские Кроссовки Nike Blazer Mid Suede", price: 12999, imageURL: "/images/sneakersImages/3.jpg" },
-  { title: "Кроссовки Puma X Aka Boku Future Rider", price: 8999, imageURL: "/images/sneakersImages/4.jpg" },
-];
-
 function App() {
+  const [items, setItems] = React.useState([]);
+  const [cartOpened, setCartOpened] = React.useState(false);
+
+  React.useEffect(() => {
+    fetch("https://620c1a41b57363259386e26c.mockapi.io/items").then((res) => {
+      return res.json();
+    }).then(json => {
+      setItems(json);
+    });
+  }, []); // request only when first render
+
   return (
     <div className="Wrapper">
-      <Drawer />
-      <Header />
+      {cartOpened ? <Drawer onClose={() => setCartOpened(false)} /> : null}
+      <Header onClickCart={() => setCartOpened(true)} />
       <div className="Content">
         <div className="BeforeSearchBlock">
           <h1>Все кроссовки</h1>
@@ -27,7 +31,7 @@ function App() {
         </div>
         <div className="Sneakers">
           {
-            arr.map((obj) => ( // why map instead foreach(doesnt return objects) - answer list rendering
+            items.map((obj) => ( // why map instead foreach(doesnt return objects) - answer list rendering
               <Card
                 title={obj.title}
                 price={obj.price}
