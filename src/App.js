@@ -3,6 +3,13 @@ import Card from './components/Card'; // variable Card just store code from Card
 import Header from './components/Header'; // variable Header just store code from Header.js, i can use this variable just like component 
 import Drawer from './components/Drawer';
 
+const arr = [
+  { title: "Мужские Кроссовки Nike Blazer Mid Suede", price: 12999, imageURL: "/images/sneakersImages/1.jpg" },
+  { title: "Мужские Кроссовки Nike Air Max 270", price: 15999, imageURL: "/images/sneakersImages/2.jpg" },
+  { title: "Мужские Кроссовки Nike Blazer Mid Suede", price: 12999, imageURL: "/images/sneakersImages/3.jpg" },
+  { title: "Кроссовки Puma X Aka Boku Future Rider", price: 8999, imageURL: "/images/sneakersImages/4.jpg" },
+];
+
 function App() {
   return (
     <div className="Wrapper">
@@ -17,10 +24,14 @@ function App() {
           </div>
         </div>
         <div className="Sneakers">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {
+            arr.map((obj) => ( // why map instead foreach(doesnt return objects) - answer list rendering
+              <Card
+                title={obj.title}
+                price={obj.price}
+                imageURL={obj.imageURL} />
+            ))
+          }
         </div>
       </div>
     </div>
