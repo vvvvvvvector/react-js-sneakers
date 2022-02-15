@@ -1,14 +1,23 @@
 import Styles from "./Card.module.scss";
 
+import React from 'react';
+
 function Card(props) {
-    const onClickButton = () => {
-        alert(props.price)
+    const [isCheckedPlus, setIsCheckedPlus] = React.useState(false);
+    const [isCheckedFav, setIsCheckedFav] = React.useState(false);
+
+    const onClickPlus = () => {
+        setIsCheckedPlus(!isCheckedPlus);
+    };
+
+    const onClickFav = () => {
+        setIsCheckedFav(!isCheckedFav);
     };
 
     return (
         <div className={Styles.Card}>
             <div className={Styles.Favourite}>
-                <img src="/images/likedHeart.svg" alt="liked" />
+                <img src={isCheckedFav ? "/images/likedHeart.svg" : "/images/unlikedHeart.svg"} alt="liked" onClick={onClickFav} />
             </div>
             <img width={133} height={112} src={props.imageURL} alt="Sneakers" />
             <h5>{props.title}</h5>
@@ -17,11 +26,9 @@ function Card(props) {
                     <span>Цена:</span>
                     <b>{props.price} руб.</b>
                 </div>
-                <button className={Styles.AddButton} onClick={onClickButton}>
-                    <img width={11} height={11} src="images/plus.svg" alt="plus" />
-                </button>
+                <img className={Styles.AddButton} src={isCheckedPlus ? "/images/buttonChecked.svg" : "/images/buttonUnchecked.svg"} onClick={onClickPlus} />
             </div>
-        </div>
+        </div >
     );
 }
 
