@@ -5,42 +5,62 @@ import Drawer from './components/Drawer';
 
 import React from 'react';
 
+import axios from 'axios';
+
 function App() {
   const [items, setItems] = React.useState([]);
+  const [cartItems, setCartItems] = React.useState([]);
   const [cartOpened, setCartOpened] = React.useState(false);
+  const [searchValue, setSearchValue] = React.useState('');  // controlled input because of {value} in inupt
 
   React.useEffect(() => {
-    fetch("https://620c1a41b57363259386e26c.mockapi.io/items").then((res) => {
-      return res.json();
-    }).then(json => {
-      setItems(json);
-    });
+    axios.get("https://620c1a41b57363259386e26c.mockapi.io/items").then((res) => setItems(res.data));
+    axios.get("https://620c1a41b57363259386e26c.mockapi.io/cart").then((res) => setCartItems(res.data));
   }, []); // request only when first render
+
+  const onAddToCart = (obj) => {
+    axios.post("https://620c1a41b57363259386e26c.mockapi.io/cart", obj);
+    setCartItems(prev => [...prev, obj]); // [...cartItems, obj] - bad practice
+  };
+
+  const onRemoveItem = (id) => {
+    //axios.delete(`https://620c1a41b57363259386e26c.mockapi.io/cart/${id}`);
+    setCartItems(prev => prev.filter(item => item.id != id)); // [...cartItems, obj] - bad practice
+  };
+
+  const onChangeSearchInput = (event) => {
+    setSearchValue(event.target.value);
+  };
 
   return (
     <div className="Wrapper">
-      {cartOpened ? <Drawer onClose={() => setCartOpened(false)} /> : null}
+      {cartOpened ? <Drawer items={cartItems} onClose={() => setCartOpened(false)} onRemove={onRemoveItem} /> : null}
       <Header onClickCart={() => setCartOpened(true)} />
       <div className="Content">
         <div className="BeforeSearchBlock">
-          <h1>Все кроссовки</h1>
+          <h1>{searchValue ? `Поиск по запросу: "${searchValue}"` : "Все кроссовки"}</h1>
           <div className="SearchBlock">
             <img src="/images/searchLogo.svg" alt="Search" />
-            <input placeholder="Поиск..." />
+            {searchValue && <img onClick={() => setSearchValue('')} className="RemoveBtn" src="/images/buttonRemove.svg" alt="clear" />}
+            <input onChange={onChangeSearchInput} value={searchValue} placeholder="Поиск..." />
           </div>
         </div>
         <div className="Sneakers">
           {
-            items.map((obj) => ( // why map instead foreach(doesnt return objects) - answer list rendering
-              <Card
-                title={obj.title}
-                price={obj.price}
-                imageURL={obj.imageURL}
-              //onClickPlus={() => alert(obj.price)}
-              //onClickFavourite={() => alert(obj.title)}
-              />
-            ))
+            items
+              .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
+              .map((item, index) => ( // why map instead foreach(doesnt return objects) - answer list rendering
+                <Card
+                  key={index}
+                  title={item.title}
+                  price={item.price}
+                  imageURL={item.imageURL}
+                  onPlus={(obj) => onAddToCart(obj)} // i can pass only item in method onAddToCart, 'no diff'
+                //onFavourite={() => alert(item.title)}
+                />
+              ))
           }
+
         </div>
       </div>
     </div>

@@ -35,6 +35,16 @@ body {
   display: flex;
   border-radius: 10px;
   padding: 0 15px;
+  position: relative;
+
+  .RemoveBtn {
+    position: absolute;
+    right: 0;
+    width: 18px;
+    height: 18px;
+    top: 13px;
+    right: 10px;
+  }
 
   input {
     border: 0;
@@ -92,6 +102,34 @@ body {
     }
   }
 
+  .EmptyCart {
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button {
+      width: 245px;
+      height: 55px;
+      position: relative;
+
+      padding-left: 27px; // moving content in the bottom
+
+      &:hover {
+        img {
+          transform: translateX(-5px);
+        }
+      }
+
+      img {
+        position: absolute;
+        top: 21px;
+        left: 30px;
+        transition: transform 0.15s ease-in-out;
+      }
+    }
+  }
+
   .CartItem {
     border: 1px solid #f3f3f3;
     border-radius: 20px;
@@ -122,16 +160,6 @@ body {
 
     .SneakerImage {
       margin-right: 20px;
-    }
-
-    .RemoveBtn {
-      opacity: 0.5;
-      cursor: pointer;
-      transition: opacity 0.15s ease-in-out;
-
-      &:hover {
-        opacity: 1;
-      }
     }
 
     .CartItemPB {
@@ -195,6 +223,16 @@ body {
   &:active {
     // when i click
     background: darken(#9dd558, 5%);
+  }
+}
+
+.RemoveBtn {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.15s ease-in-out;
+
+  &:hover {
+    opacity: 1;
   }
 }
 
