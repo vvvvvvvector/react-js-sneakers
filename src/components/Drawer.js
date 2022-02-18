@@ -5,8 +5,8 @@ function Drawer({ onClose, onRemove, items = [] }) {
                 <div className="Drawer">
                     <h2>Корзина<img onClick={onClose} className="RemoveBtn" src="/images/buttonRemove.svg" alt="remove" /></h2>
                     <div className="Items">
-                        {items.map((obj) => (
-                            <div className="CartItem">
+                        {items.map((obj, index) => (
+                            <div className="CartItem" key={index}>
                                 <div style={{ backgroundImage: `url(${obj.imageURL})` }} className="CartItemImg">
                                 </div>
                                 <div className="CartItemPB">
@@ -34,10 +34,11 @@ function Drawer({ onClose, onRemove, items = [] }) {
                     </div>
                 </div> :
                 <div className="Drawer">
-                    <h2>Корзина<img onClick={onClose} className="RemoveBtn" src="/images/buttonRemove.svg" alt="remove" /></h2>
+                    <h2>Корзина</h2>
                     <div className="EmptyCart">
                         <img width={120} height={120} src="/images/emptycart.svg" />
                         <h3>Корзина пустая</h3>
+                        <p>Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.</p>
                         <button onClick={onClose} className="GreenButton">Вернуться назад<img src="/images/leftArrow.svg" alt="leftarrow" /></button>
                     </div>
                 </div>

@@ -103,15 +103,26 @@ body {
   }
 
   .EmptyCart {
-    margin-top: 150px;
+    margin-top: 130px;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    h3{
+      margin-bottom: 10px;
+    }
+
+    p {
+      text-align: center;
+      margin: 0;
+      opacity: 0.5;
+    }
 
     button {
       width: 245px;
       height: 55px;
       position: relative;
+      margin-top: 30px;
 
       padding-left: 27px; // moving content in the bottom
 
