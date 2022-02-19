@@ -20,22 +20,30 @@ function App() {
 
   const onAddToCart = (obj) => {
     axios.post("https://620c1a41b57363259386e26c.mockapi.io/cart", obj);
-    setCartItems(prev => [...prev, obj]); // [...cartItems, obj] - bad practice
+    setCartItems((prev) => [...prev, obj]); // [...cartItems, obj] - bad practice
   };
 
   const onRemoveItem = (id) => {
-    //axios.delete(`https://620c1a41b57363259386e26c.mockapi.io/cart/${id}`);
-    setCartItems(prev => prev.filter(item => item.id != id)); // [...cartItems, obj] - bad practice
+    axios.delete(`https://620c1a41b57363259386e26c.mockapi.io/cart/${id}`);
+    setCartItems((prev) => prev.filter((item) => Number(item.id) !== Number(id))); // [...cartItems, obj] - bad practice
   };
 
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value);
   };
 
+  const element = document.querySelector("body");
+
   return (
     <div className="Wrapper">
-      {cartOpened ? <Drawer items={cartItems} onClose={() => setCartOpened(false)} onRemove={onRemoveItem} /> : null}
-      <Header onClickCart={() => setCartOpened(true)} />
+      {cartOpened ? <Drawer items={cartItems} onClose={() => {
+        element.style = "overflow-y: visible";
+        setCartOpened(false)
+      }} onRemove={onRemoveItem} /> : null}
+      <Header onClickCart={() => {
+        element.style = "overflow-y: hidden";
+        setCartOpened(true);
+      }} />
       <div className="Content">
         <div className="BeforeSearchBlock">
           <h1>{searchValue ? `Поиск по запросу: "${searchValue}"` : "Все кроссовки"}</h1>
@@ -60,7 +68,6 @@ function App() {
                 />
               ))
           }
-
         </div>
       </div>
     </div>

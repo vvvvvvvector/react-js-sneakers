@@ -28,6 +28,8 @@ body {
 .Sneakers {
   display: flex;
   flex-wrap: wrap;
+  position: relative;
+  left: 33px;
 }
 
 .SearchBlock {
@@ -62,7 +64,7 @@ body {
 }
 
 .Overlay {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
@@ -108,7 +110,7 @@ body {
     flex-direction: column;
     align-items: center;
 
-    h3{
+    h3 {
       margin-bottom: 10px;
     }
 
