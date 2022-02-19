@@ -42,8 +42,6 @@ function App() {
 
   const element = document.querySelector("body");
 
-  const comp = <h1>hello world</h1>;
-
   return (
     <div className="Wrapper">
       {cartOpened ? <Drawer items={cartItems} onClose={() => {
