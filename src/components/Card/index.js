@@ -2,11 +2,12 @@ import Styles from "./Card.module.scss";
 
 import React from 'react';
 
-function Card({ title, imageURL, price, onPlus }) {
+function Card({ title, imageURL, price, onPlus, onFavourite }) {
     const [isCheckedPlus, setIsCheckedPlus] = React.useState(false);
     const [isCheckedFav, setIsCheckedFav] = React.useState(false);
 
     const onClickFav = () => {
+        onFavourite({ title, imageURL, price });
         setIsCheckedFav(!isCheckedFav);
     };
 

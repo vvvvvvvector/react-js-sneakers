@@ -3,6 +3,8 @@ import Card from './components/Card'; // variable Card just store code from Card
 import Header from './components/Header'; // variable Header just store code from Header.js, i can use this variable just like component 
 import Drawer from './components/Drawer';
 
+import { Route } from 'react-router-dom';
+
 import React from 'react';
 
 import axios from 'axios';
@@ -10,6 +12,7 @@ import axios from 'axios';
 function App() {
   const [items, setItems] = React.useState([]);
   const [cartItems, setCartItems] = React.useState([]);
+  const [favourites, setFavourites] = React.useState([]);
   const [cartOpened, setCartOpened] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState('');  // controlled input because of {value} in inupt
 
@@ -20,19 +23,26 @@ function App() {
 
   const onAddToCart = (obj) => {
     axios.post("https://620c1a41b57363259386e26c.mockapi.io/cart", obj);
-    setCartItems((prev) => [...prev, obj]); // [...cartItems, obj] - bad practice
+    setCartItems((prev) => [...prev, obj]); // ?[...cartItems, obj] - bad practice?
   };
 
   const onRemoveItem = (id) => {
     axios.delete(`https://620c1a41b57363259386e26c.mockapi.io/cart/${id}`);
-    setCartItems((prev) => prev.filter((item) => Number(item.id) !== Number(id))); // [...cartItems, obj] - bad practice
+    setCartItems((prev) => prev.filter((item) => item.id !== id)); // ?[...cartItems, obj] - bad practice?
   };
 
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value);
   };
 
+  const onFavourite = (obj) => {
+    axios.post("https://620c1a41b57363259386e26c.mockapi.io/favourites", obj);
+    setFavourites((prev) => [...prev, obj]);
+  };
+
   const element = document.querySelector("body");
+
+  const comp = <h1>hello world</h1>;
 
   return (
     <div className="Wrapper">
@@ -64,7 +74,7 @@ function App() {
                   price={item.price}
                   imageURL={item.imageURL}
                   onPlus={(obj) => onAddToCart(obj)} // i can pass only item in method onAddToCart, 'no diff'
-                //onFavourite={() => alert(item.title)}
+                  onFavourite={(obj) => onFavourite(obj)}
                 />
               ))
           }
