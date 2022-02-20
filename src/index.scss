@@ -25,6 +25,31 @@ body {
   }
 }
 
+.ContentFav {
+  padding: 40px;
+
+  .SmallHeader {
+    h1 {
+      margin: 0;
+    }
+    img{
+      position: relative;
+      bottom: -5px;
+      margin-right: 15px;
+    }
+  }
+
+  .BackBtn {
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.15s ease-in-out;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
 .Sneakers {
   display: flex;
   flex-wrap: wrap;
@@ -251,4 +276,43 @@ body {
 
 .Items {
   flex: 1; // !!!! 2
+}
+
+.EmptyFavourites {
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  p {
+    opacity: 0.5;
+    text-align: center;
+    margin: 0;
+  }
+
+  button {
+    width: 245px;
+    height: 55px;
+    position: relative;
+    margin-top: 60px;
+
+    padding-left: 27px; // moving content in the bottom
+
+    &:hover {
+      img {
+        transform: translateX(-5px);
+      }
+    }
+
+    img {
+      position: absolute;
+      top: 21px;
+      left: 30px;
+      transition: transform 0.15s ease-in-out;
+    }
+  }
 }
