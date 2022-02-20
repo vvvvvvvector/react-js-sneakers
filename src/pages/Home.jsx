@@ -23,6 +23,7 @@ function Home({ searchValue,
                         .map((item, index) => ( // why map instead foreach(doesnt return objects) - answer list rendering
                             <Card
                                 key={index}
+                                id={item.id}
                                 title={item.title}
                                 price={item.price}
                                 imageURL={item.imageURL}

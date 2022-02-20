@@ -21,11 +21,12 @@ function App() {
   React.useEffect(() => {
     axios.get("https://620c1a41b57363259386e26c.mockapi.io/items").then((res) => setItems(res.data));
     axios.get("https://620c1a41b57363259386e26c.mockapi.io/cart").then((res) => setCartItems(res.data));
+    axios.get("https://620c1a41b57363259386e26c.mockapi.io/favourites").then((res) => setFavourites(res.data));
   }, []); // request only when first render
 
-  const onAddToCart = (obj) => {
-    axios.post("https://620c1a41b57363259386e26c.mockapi.io/cart", obj);
-    setCartItems((prev) => [...prev, obj]); // ?[...cartItems, obj] - bad practice?
+  const onAddToCart = async (obj) => {
+    const { data } = await axios.post("https://620c1a41b57363259386e26c.mockapi.io/cart", obj);
+    setCartItems((prev) => [...prev, data]); // ?[...cartItems, obj] - bad practice?
   };
 
   const onRemoveItem = (id) => {
@@ -37,9 +38,13 @@ function App() {
     setSearchValue(event.target.value);
   };
 
-  const onFavourite = (obj) => {
-    axios.post("https://620c1a41b57363259386e26c.mockapi.io/favourites", obj);
-    setFavourites((prev) => [...prev, obj]);
+  const onFavourite = async (obj) => {
+    if (favourites.find(favObj => favObj.id === obj.id)) {
+      axios.delete(`https://620c1a41b57363259386e26c.mockapi.io/favourites/${obj.id}`);
+    } else {
+      const { data } = await axios.post("https://620c1a41b57363259386e26c.mockapi.io/favourites", obj);
+      setFavourites((prev) => [...prev, data]);
+    }
   };
 
   const element = document.querySelector("body");
@@ -63,7 +68,9 @@ function App() {
           items={items}
           onAddToCart={onAddToCart}
           onFavourite={onFavourite} />} />
-        <Route path={"/favourites"} element={<Favourites />} />
+        <Route path={"/favourites"} element={<Favourites
+          items={favourites}
+          onFavourite={onFavourite} />} />
       </Routes>
 
     </div>
