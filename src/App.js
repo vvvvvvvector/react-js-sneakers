@@ -1,9 +1,11 @@
 // ./ means on one level; First letter must be upper case, it means that it is component
-import Card from './components/Card'; // variable Card just store code from Card.js, naming can be different
 import Header from './components/Header'; // variable Header just store code from Header.js, i can use this variable just like component 
 import Drawer from './components/Drawer';
 
-import { Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Favourites from './pages/Favourites';
+
+import { Route, Routes } from 'react-router-dom';
 
 import React from 'react';
 
@@ -52,32 +54,18 @@ function App() {
         element.style = "overflow-y: hidden";
         setCartOpened(true);
       }} />
-      <div className="Content">
-        <div className="BeforeSearchBlock">
-          <h1>{searchValue ? `Поиск по запросу: "${searchValue}"` : "Все кроссовки"}</h1>
-          <div className="SearchBlock">
-            <img src="/images/searchLogo.svg" alt="Search" />
-            {searchValue && <img onClick={() => setSearchValue('')} className="RemoveBtn" src="/images/buttonRemove.svg" alt="clear" />}
-            <input onChange={onChangeSearchInput} value={searchValue} placeholder="Поиск..." />
-          </div>
-        </div>
-        <div className="Sneakers">
-          {
-            items
-              .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-              .map((item, index) => ( // why map instead foreach(doesnt return objects) - answer list rendering
-                <Card
-                  key={index}
-                  title={item.title}
-                  price={item.price}
-                  imageURL={item.imageURL}
-                  onPlus={(obj) => onAddToCart(obj)} // i can pass only item in method onAddToCart, 'no diff'
-                  onFavourite={(obj) => onFavourite(obj)}
-                />
-              ))
-          }
-        </div>
-      </div>
+
+      <Routes>
+        <Route path={"/"} element={<Home
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          onChangeSearchInput={onChangeSearchInput}
+          items={items}
+          onAddToCart={onAddToCart}
+          onFavourite={onFavourite} />} />
+        <Route path={"/favourites"} element={<Favourites />} />
+      </Routes>
+
     </div>
   );
 }
