@@ -2,12 +2,30 @@ import Card from "../components/Card"; // variable Card just store code from Car
 
 function Home({
   searchValue,
+  cartItems,
   setSearchValue,
   onChangeSearchInput,
   items,
   onAddToCart,
   onFavourite,
+  isLoading,
 }) {
+  const renderItems = () => {
+    const filteredItems = items.filter((item) =>
+      item.title.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    return (isLoading ? [...Array(8)] : filteredItems).map((item, index) => (
+      <Card
+        key={index}
+        isAdded={cartItems.some((obj) => obj.id === item.id)}
+        onPlus={(obj) => onAddToCart(obj)} // i can pass only item in method onAddToCart, 'no diff'
+        onFavourite={(obj) => onFavourite(obj)}
+        isLoading={isLoading}
+        {...item}
+      />
+    ));
+  };
+
   return (
     <div className="Content">
       <div className="BeforeSearchBlock">
@@ -31,28 +49,7 @@ function Home({
           />
         </div>
       </div>
-      <div className="Sneakers">
-        {items
-          .filter((item) =>
-            item.title.toLowerCase().includes(searchValue.toLowerCase())
-          )
-          .map(
-            (
-              item,
-              index // why map instead foreach(doesnt return objects) - answer list rendering
-            ) => (
-              <Card
-                key={index}
-                id={item.id}
-                title={item.title}
-                price={item.price}
-                imageURL={item.imageURL}
-                onPlus={(obj) => onAddToCart(obj)} // i can pass only item in method onAddToCart, 'no diff'
-                onFavourite={(obj) => onFavourite(obj)}
-              />
-            )
-          )}
-      </div>
+      <div className="Sneakers">{renderItems()}</div>
     </div>
   );
 }

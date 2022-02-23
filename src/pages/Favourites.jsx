@@ -1,7 +1,7 @@
 import Card from "../components/Card";
 import { Link } from "react-router-dom";
 
-function Favourites({ items = [], onFavourite }) {
+function Favourites({ items = [], onFavourite, onAddToCart }) {
   return items.length > 0 ? (
     <div className="ContentFav">
       <div className="SmallHeader">
@@ -19,22 +19,15 @@ function Favourites({ items = [], onFavourite }) {
         </h1>
       </div>
       <div className="Sneakers">
-        {items.map(
-          (
-            item,
-            index // why map instead foreach(doesnt return objects) - answer list rendering
-          ) => (
-            <Card
-              key={index}
-              id={item.id}
-              title={item.title}
-              price={item.price}
-              imageURL={item.imageURL}
-              isFavourite={true}
-              onFavourite={onFavourite}
-            />
-          )
-        )}
+        {items.map((item, index) => (
+          <Card
+            key={index}
+            isFavourite={true}
+            onFavourite={onFavourite}
+            onPlus={onAddToCart}
+            {...item}
+          />
+        ))}
       </div>
     </div>
   ) : (

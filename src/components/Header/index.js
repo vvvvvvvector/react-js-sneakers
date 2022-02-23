@@ -20,9 +20,9 @@ function Header(props) {
                     <span>1205 руб.</span>
                 </li>
                 <li className={Styles.Heart}>
-                    <Link to="/favourites">
+                    <a href="/favourites">
                         <img width={21} height={19} src="/images/heartLogo.svg" alt="heartlogo" />
-                    </Link>
+                    </a>
                 </li>
                 <li className={Styles.Logo}>
                     <img width={20} height={20} src="/images/userLogo.svg" alt="userLogo" />
