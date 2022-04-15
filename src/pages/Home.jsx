@@ -2,7 +2,6 @@ import Card from "../components/Card"; // variable Card just store code from Car
 
 function Home({
   searchValue,
-  cartItems,
   setSearchValue,
   onChangeSearchInput,
   items,
@@ -17,7 +16,6 @@ function Home({
     return (isLoading ? [...Array(8)] : filteredItems).map((item, index) => (
       <Card
         key={index}
-        isAdded={cartItems.some((obj) => obj.id === item.id)}
         onPlus={(obj) => onAddToCart(obj)} // i can pass only item in method onAddToCart, 'no diff'
         onFavourite={(obj) => onFavourite(obj)}
         isLoading={isLoading}

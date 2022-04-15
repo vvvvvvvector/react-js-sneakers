@@ -11,6 +11,8 @@ import React from 'react';
 
 import axios from 'axios';
 
+import AppContext from './context';
+
 function App() {
   const [items, setItems] = React.useState([]);
   const [cartItems, setCartItems] = React.useState([]);
@@ -74,36 +76,42 @@ function App() {
     }
   };
 
+  const isItemAdded = (id) => {
+    return cartItems.some((obj) => Number(obj.id) === Number(id));
+  }
+
   const element = document.querySelector("body");
 
   return (
-    <div className="Wrapper">
-      {cartOpened ? <Drawer items={cartItems} onClose={() => {
-        element.style = "overflow-y: visible";
-        setCartOpened(false)
-      }} onRemove={onRemoveItem} /> : null}
-      <Header onClickCart={() => {
-        element.style = "overflow-y: hidden";
-        setCartOpened(true);
-      }} />
+    <AppContext.Provider value={{ items, cartItems, favourites, isItemAdded, setCartOpened }}>
+      <div className="Container">
+        <div className="Wrapper">
+          <Header onClickCart={() => {
+            element.style = "overflow-y: hidden";
+            setCartOpened(true);
+            document.body.style.overflow = 'hidden';
+          }} />
 
-      <Routes>
-        <Route path={"/"} element={<Home
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-          cartItems={cartItems}
-          onChangeSearchInput={onChangeSearchInput}
-          items={items}
-          onAddToCart={onAddToCart}
-          onFavourite={onFavourite}
-          isLoading={isLoading} />} />
-        <Route path={"/favourites"} element={<Favourites
-          items={favourites}
-          onFavourite={onFavourite}
-          onAddToCart={onAddToCart} />} />
-      </Routes>
-
-    </div>
+          <Routes>
+            <Route path={"/"} element={<Home
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+              cartItems={cartItems}
+              onChangeSearchInput={onChangeSearchInput}
+              items={items}
+              onAddToCart={onAddToCart}
+              onFavourite={onFavourite}
+              isLoading={isLoading} />} />
+            <Route path={"/favourites"} element={<Favourites
+              onFavourite={onFavourite} />} />
+          </Routes>
+        </div>
+        {cartOpened ? <Drawer items={cartItems} onClose={() => {
+          element.style = "overflow-y: visible";
+          setCartOpened(false)
+        }} onRemove={onRemoveItem} /> : null}
+      </div>
+    </AppContext.Provider>
   );
 }
 

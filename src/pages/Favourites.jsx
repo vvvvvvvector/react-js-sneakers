@@ -1,8 +1,13 @@
 import Card from "../components/Card";
 import { Link } from "react-router-dom";
+import AppContext from "../context";
+import React from "react";
+import FavouritesInfo from "../components/FavouritesInfo";
 
-function Favourites({ items = [], onFavourite, onAddToCart }) {
-  return items.length > 0 ? (
+function Favourites({ onFavourite, onAddToCart }) {
+  const { favourites } = React.useContext(AppContext);
+
+  return favourites.length > 0 ? (
     <div className="ContentFav">
       <div className="SmallHeader">
         <h1>
@@ -19,7 +24,7 @@ function Favourites({ items = [], onFavourite, onAddToCart }) {
         </h1>
       </div>
       <div className="Sneakers">
-        {items.map((item, index) => (
+        {favourites.map((item, index) => (
           <Card
             key={index}
             isFavourite={true}
@@ -31,17 +36,7 @@ function Favourites({ items = [], onFavourite, onAddToCart }) {
       </div>
     </div>
   ) : (
-    <div className="EmptyFavourites">
-      <img width={50} height={50} src="/images/sadSmile.jpg" />
-      <h2>Закладок нет :(</h2>
-      <p>Вы ничего не добавили в закладки</p>
-      <Link to="/">
-        <button className="GreenButton">
-          Вернуться назад
-          <img src="/images/leftArrow.svg" alt="leftarrow" />
-        </button>
-      </Link>
-    </div>
+    <FavouritesInfo imageURL="images/sadSmile.jpg" title="Закладок нет :(" description="Вы ничего не добавили в закладки"/>
   );
 }
 

@@ -1,3 +1,5 @@
+import Info from "./Info";
+
 function Drawer({ onClose, onRemove, items = [] }) {
     return (
         <div className="Overlay">
@@ -35,12 +37,7 @@ function Drawer({ onClose, onRemove, items = [] }) {
                 </div> :
                 <div className="Drawer">
                     <h2>Корзина</h2>
-                    <div className="EmptyCart">
-                        <img width={120} height={120} src="/images/emptycart.svg" />
-                        <h3>Корзина пустая</h3>
-                        <p>Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.</p>
-                        <button onClick={onClose} className="GreenButton">Вернуться назад<img src="/images/leftArrow.svg" alt="leftarrow" /></button>
-                    </div>
+                    <Info imageURL="images/emptyCart.svg" title="Корзина пустая" description="Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."/>
                 </div>
             }
         </div >

@@ -4,8 +4,10 @@ import ContentLoader from "react-content-loader";
 
 import React from 'react';
 
-function Card({ id, title, imageURL, price, onPlus, onFavourite, isFavourite = false, isAdded = false, isLoading = false }) {
-    const [isCheckedPlus, setIsCheckedPlus] = React.useState(isAdded);
+import AppContext from "../../context";
+
+function Card({ id, title, imageURL, price, onPlus, onFavourite, isFavourite = false, isLoading = false }) {
+    const { isItemAdded } = React.useContext(AppContext);
     const [isCheckedFav, setIsCheckedFav] = React.useState(isFavourite);
 
     const onClickFav = () => {
@@ -15,7 +17,6 @@ function Card({ id, title, imageURL, price, onPlus, onFavourite, isFavourite = f
 
     const onClickPlus = () => {
         onPlus({ id, title, imageURL, price });
-        setIsCheckedPlus(!isCheckedPlus);
     };
 
     return (
@@ -45,7 +46,7 @@ function Card({ id, title, imageURL, price, onPlus, onFavourite, isFavourite = f
                                 <span>Цена:</span>
                                 <b>{price} руб.</b>
                             </div>
-                            <img className={Styles.AddButton} src={isCheckedPlus ? "/images/buttonChecked.svg" : "/images/buttonUnchecked.svg"} onClick={onClickPlus} />
+                            <img className={Styles.AddButton} src={isItemAdded(id) ? "/images/buttonChecked.svg" : "/images/buttonUnchecked.svg"} onClick={onClickPlus} alt="Plus" />
                         </div>
                     </>
             }
