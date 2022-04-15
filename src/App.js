@@ -83,7 +83,7 @@ function App() {
   const element = document.querySelector("body");
 
   return (
-    <AppContext.Provider value={{ items, cartItems, favourites, isItemAdded, setCartOpened }}>
+    <AppContext.Provider value={{ items, cartItems, favourites, isItemAdded, setCartOpened, setCartItems }}>
       <div className="Container">
         <div className="Wrapper">
           <Header onClickCart={() => {
