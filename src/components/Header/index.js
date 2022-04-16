@@ -14,7 +14,7 @@ function Header(props) {
         <header>
             <div className={Styles.HeaderLeft}>
                 <Link to="/">
-                    <img width={40} height={40} src="/images/sneakersLogo.svg" />
+                    <img width={40} height={40} src="/images/sneakersLogo.svg" alt="sneakers logo"/>
                 </Link>
                 <div>
                     <h3>React Sneakers</h3>
