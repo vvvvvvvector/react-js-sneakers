@@ -2,7 +2,14 @@ import Styles from "./Header.module.scss";
 
 import { Link } from 'react-router-dom';
 
+import React from 'react';
+import AppContext from "../../context";
+
 function Header(props) {
+    const { cartItems } = React.useContext(AppContext);
+
+    const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0);
+
     return (
         <header>
             <div className={Styles.HeaderLeft}>
@@ -11,13 +18,13 @@ function Header(props) {
                 </Link>
                 <div>
                     <h3>React Sneakers</h3>
-                    <p>Магазин лучших кроссовок</p>
+                    <p>The best sneakers shop</p>
                 </div>
             </div>
             <ul className={Styles.HeaderRight}>
                 <li onClick={props.onClickCart} className={Styles.Cart}>
                     <img width={18} height={18} src="/images/cartLogo.svg" alt="cartlogo" />
-                    <span>1205 руб.</span>
+                    <span>{totalPrice} rub.</span>
                 </li>
                 <li className={Styles.Heart}>
                     <a href="/favourites">
@@ -25,7 +32,9 @@ function Header(props) {
                     </a>
                 </li>
                 <li className={Styles.Logo}>
-                    <img width={20} height={20} src="/images/userLogo.svg" alt="userLogo" />
+                    <Link to="/orders">
+                        <img width={20} height={20} src="/images/userLogo.svg" alt="userLogo" />
+                    </Link>
                 </li>
             </ul>
         </header>

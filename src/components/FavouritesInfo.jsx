@@ -8,7 +8,7 @@ const FavouritesInfo = ({title, description, imageURL}) => {
             <p>{description}</p>
             <Link to="/">
                 <button className="GreenButton">
-                    Вернуться назад
+                    Home page
                     <img src="/images/leftArrow.svg" alt="leftarrow" />
                 </button>
             </Link>

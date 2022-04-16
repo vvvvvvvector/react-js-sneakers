@@ -8,7 +8,7 @@ function Favourites({ onFavourite, onAddToCart }) {
   const { favourites } = React.useContext(AppContext);
 
   return favourites.length > 0 ? (
-    <div className="ContentFav">
+    <div className="ContentPages">
       <div className="SmallHeader">
         <h1>
           <Link to="/">
@@ -20,7 +20,7 @@ function Favourites({ onFavourite, onAddToCart }) {
               alt="goBackButton"
             />
           </Link>
-          Мои закладки
+          Favourites
         </h1>
       </div>
       <div className="Sneakers">
@@ -36,7 +36,7 @@ function Favourites({ onFavourite, onAddToCart }) {
       </div>
     </div>
   ) : (
-    <FavouritesInfo imageURL="images/sadSmile.jpg" title="Закладок нет :(" description="Вы ничего не добавили в закладки"/>
+    <FavouritesInfo imageURL="images/sadSmile.jpg" title="There are no favourites :(" description="You haven't added anything to your favourites"/>
   );
 }
 

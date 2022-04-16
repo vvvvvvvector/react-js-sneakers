@@ -9,14 +9,15 @@ import AppContext from "../../context";
 function Card({ id, title, imageURL, price, onPlus, onFavourite, isFavourite = false, isLoading = false }) {
     const { isItemAdded } = React.useContext(AppContext);
     const [isCheckedFav, setIsCheckedFav] = React.useState(isFavourite);
+    const obj = { id, clickPlusID: id, title, imageURL, price };
 
     const onClickFav = () => {
-        onFavourite({ id, title, imageURL, price });
+        onFavourite(obj);
         setIsCheckedFav(!isCheckedFav);
     };
 
     const onClickPlus = () => {
-        onPlus({ id, title, imageURL, price });
+        onPlus(obj);
     };
 
     return (
@@ -37,16 +38,16 @@ function Card({ id, title, imageURL, price, onPlus, onFavourite, isFavourite = f
                 </ContentLoader> :
                     <>
                         <div className={Styles.Favourite}>
-                            <img src={isCheckedFav ? "/images/likedHeart.svg" : "/images/unlikedHeart.svg"} alt="liked" onClick={onClickFav} />
+                            {onFavourite && <img src={isCheckedFav ? "/images/likedHeart.svg" : "/images/unlikedHeart.svg"} alt="liked" onClick={onClickFav} />}
                         </div>
                         <img width={133} height={112} src={imageURL} alt="Sneakers" />
                         <h5>{title}</h5>
                         <div className={Styles.CardBottom}>
                             <div className={Styles.CardBottomCost}>
-                                <span>Цена:</span>
-                                <b>{price} руб.</b>
+                                <span>Price:</span>
+                                <b>{price} rub.</b>
                             </div>
-                            <img className={Styles.AddButton} src={isItemAdded(id) ? "/images/buttonChecked.svg" : "/images/buttonUnchecked.svg"} onClick={onClickPlus} alt="Plus" />
+                            {onPlus && <img className={Styles.AddButton} src={isItemAdded(id) ? "/images/buttonChecked.svg" : "/images/buttonUnchecked.svg"} onClick={onClickPlus} alt="Plus" />}
                         </div>
                     </>
             }

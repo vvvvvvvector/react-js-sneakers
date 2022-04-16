@@ -28,7 +28,7 @@ function Home({
     <div className="Content">
       <div className="BeforeSearchBlock">
         <h1>
-          {searchValue ? `Поиск по запросу: "${searchValue}"` : "Все кроссовки"}
+          {searchValue ? `Search for: "${searchValue}"` : "All sneakers"}
         </h1>
         <div className="SearchBlock">
           <img src="/images/searchLogo.svg" alt="Search" />
@@ -43,7 +43,7 @@ function Home({
           <input
             onChange={onChangeSearchInput}
             value={searchValue}
-            placeholder="Поиск..."
+            placeholder="Search..."
           />
         </div>
       </div>
