@@ -16,7 +16,7 @@ function Favourites({ onFavourite, onAddToCart }) {
               width={35}
               height={35}
               className="BackBtn"
-              src="/images/buttonBack.svg"
+              src="images/buttonBack.svg"
               alt="goBackButton"
             />
           </Link>

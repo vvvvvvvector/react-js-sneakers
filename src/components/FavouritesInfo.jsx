@@ -9,7 +9,7 @@ const FavouritesInfo = ({ title, description, imageURL }) => {
             <Link to="/">
                 <button className="GreenButton">
                     Home page
-                    <img src="/images/leftArrow.svg" alt="left arrow" />
+                    <img src="images/leftArrow.svg" alt="left arrow" />
                 </button>
             </Link>
         </div>

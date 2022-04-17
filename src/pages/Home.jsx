@@ -31,12 +31,12 @@ function Home({
           {searchValue ? `Search for: "${searchValue}"` : "All sneakers"}
         </h1>
         <div className="SearchBlock">
-          <img src="/images/searchLogo.svg" alt="Search" />
+          <img src="images/searchLogo.svg" alt="Search" />
           {searchValue && (
             <img
               onClick={() => setSearchValue("")}
               className="RemoveBtn"
-              src="/images/buttonRemove.svg"
+              src="images/buttonRemove.svg"
               alt="clear"
             />
           )}

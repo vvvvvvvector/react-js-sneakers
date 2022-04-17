@@ -34,6 +34,8 @@ function App() {
       setCartItems(CartResponse.data); // 1
       setFavourites(FavResponse.data); // 2
       setItems(ItemsResponse.data); // 3 4real
+
+      console.log(process.env.PUBLIC_URL);
     }
 
     FetchData();
@@ -92,7 +94,7 @@ function App() {
           }} />
 
           <Routes>
-            <Route path={"/"} element={<Home
+            <Route exact path="/" element={<Home
               searchValue={searchValue}
               setSearchValue={setSearchValue}
               cartItems={cartItems}
@@ -101,9 +103,9 @@ function App() {
               onAddToCart={onAddToCart}
               onFavourite={onFavourite}
               isLoading={isLoading} />} />
-            <Route path={"/favourites"} element={<Favourites
+            <Route path="/favourites" element={<Favourites
               onFavourite={onFavourite} />} />
-            <Route path={"/orders"} element={<Orders />} />
+            <Route path="/orders" element={<Orders />} />
           </Routes>
         </div>
         {cartOpened ? <Drawer items={cartItems} onClose={() => {

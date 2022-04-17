@@ -13,7 +13,6 @@ function Orders() {
         (async () => {
             const { data } = await axios.get("https://620c1a41b57363259386e26c.mockapi.io/orders");
             setOrders(data.reduce((prev, obj) => [...prev, ...obj.items], []));
-            console.log(orders);
         })();
     }, []);
 
@@ -26,7 +25,7 @@ function Orders() {
                             width={35}
                             height={35}
                             className="BackBtn"
-                            src="/images/buttonBack.svg"
+                            src="images/buttonBack.svg"
                             alt="goBackButton"
                         />
                     </Link>

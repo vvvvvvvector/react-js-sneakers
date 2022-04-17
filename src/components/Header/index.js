@@ -14,7 +14,7 @@ function Header(props) {
         <header>
             <div className={Styles.HeaderLeft}>
                 <Link to="/">
-                    <img width={40} height={40} src="/images/sneakersLogo.svg" alt="sneakers logo"/>
+                    <img width={40} height={40} src="images/sneakersLogo.svg" alt="sneakers logo"/>
                 </Link>
                 <div>
                     <h3>React Sneakers</h3>
@@ -23,17 +23,17 @@ function Header(props) {
             </div>
             <ul className={Styles.HeaderRight}>
                 <li onClick={props.onClickCart} className={Styles.Cart}>
-                    <img width={18} height={18} src="/images/cartLogo.svg" alt="cartlogo" />
+                    <img width={18} height={18} src="images/cartLogo.svg" alt="cartlogo" />
                     <span>{totalPrice} rub.</span>
                 </li>
                 <li className={Styles.Heart}>
-                    <a href="/favourites">
-                        <img width={21} height={19} src="/images/heartLogo.svg" alt="heartlogo" />
+                    <a href={`${process.env.PUBLIC_URL}/favourites`}>
+                        <img width={21} height={19} src="images/heartLogo.svg" alt="heartlogo" />
                     </a>
                 </li>
                 <li className={Styles.Logo}>
                     <Link to="/orders">
-                        <img width={20} height={20} src="/images/userLogo.svg" alt="userLogo" />
+                        <img width={20} height={20} src="images/userLogo.svg" alt="userLogo" />
                     </Link>
                 </li>
             </ul>
