@@ -27,9 +27,9 @@ function Header(props) {
                     <span>{totalPrice} rub.</span>
                 </li>
                 <li className={Styles.Heart}>
-                    <a href={`${process.env.PUBLIC_URL}/favourites`}>
+                    <Link to="/favourites">
                         <img width={21} height={19} src="images/heartLogo.svg" alt="heartlogo" />
-                    </a>
+                    </Link>
                 </li>
                 <li className={Styles.Logo}>
                     <Link to="/orders">

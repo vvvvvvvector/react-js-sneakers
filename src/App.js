@@ -34,8 +34,6 @@ function App() {
       setCartItems(CartResponse.data); // 1
       setFavourites(FavResponse.data); // 2
       setItems(ItemsResponse.data); // 3 4real
-
-      console.log(process.env.PUBLIC_URL);
     }
 
     FetchData();
