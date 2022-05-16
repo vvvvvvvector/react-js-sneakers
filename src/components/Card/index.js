@@ -38,7 +38,7 @@ function Card({ id, title, imageURL, price, onPlus, onFavourite, isFavourite = f
                 </ContentLoader> :
                     <>
                         <div className={Styles.Favourite}>
-                            {onFavourite && <img src={isCheckedFav ? "images/likedHeart.svg" : "images/unlikedHeart.svg"} alt="liked" onClick={onClickFav} />}
+                            {onFavourite && <img src={isCheckedFav ? "images/liked_heart.svg" : "images/unliked_heart.svg"} alt="liked" onClick={onClickFav} />}
                         </div>
                         <img width={133} height={112} src={imageURL} alt="Sneakers" />
                         <h5>{title}</h5>
@@ -47,7 +47,7 @@ function Card({ id, title, imageURL, price, onPlus, onFavourite, isFavourite = f
                                 <span>Price:</span>
                                 <b>{price} rub.</b>
                             </div>
-                            {onPlus && <img className={Styles.AddButton} src={isItemAdded(id) ? "images/buttonChecked.svg" : "images/buttonUnchecked.svg"} onClick={onClickPlus} alt="Plus" />}
+                            {onPlus && <img className={Styles.AddButton} src={isItemAdded(id) ? "images/checked_button.svg" : "images/unchecked_button.svg"} onClick={onClickPlus} alt="Plus" />}
                         </div>
                     </>
             }

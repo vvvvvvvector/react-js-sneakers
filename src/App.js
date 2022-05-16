@@ -1,16 +1,12 @@
-// ./ means on one level; First letter must be upper case, it means that it is component
-import Header from './components/Header'; // variable Header just store code from Header.js, i can use this variable just like component 
+import React from 'react';
+import axios from 'axios';
+
+import Header from './components/Header';
 import Drawer from './components/Drawer';
 
 import Home from './pages/Home';
 import Favourites from './pages/Favourites';
 import Orders from './pages/Orders';
-
-import { Route, Routes } from 'react-router-dom';
-
-import React from 'react';
-
-import axios from 'axios';
 
 import AppContext from './context';
 
@@ -46,7 +42,7 @@ function App() {
         setCartItems((prev) => prev.filter((x) => Number(x.clickPlusID) !== Number(obj.id)));
         axios.delete(`https://620c1a41b57363259386e26c.mockapi.io/cart/${findItem.id}`);
       } else {
-        const {data} = await axios.post("https://620c1a41b57363259386e26c.mockapi.io/cart", obj);
+        const { data } = await axios.post("https://620c1a41b57363259386e26c.mockapi.io/cart", obj);
         setCartItems((prev) => [...prev, data]); // ?[...cartItems, obj] - bad practice?
       }
     } catch (error) {
@@ -73,7 +69,7 @@ function App() {
         setFavourites((prev) => [...prev, data]);
       }
     } catch (error) {
-      alert("Не удалось добавить в закладки!");
+      alert("Error while adding to favourites!");
       console.log(error.message);
     }
   };
@@ -91,27 +87,25 @@ function App() {
             document.body.style.overflow = 'hidden';
           }} />
 
-          <Routes>
-            <Route exact path="/" element={<Home
-              searchValue={searchValue}
-              setSearchValue={setSearchValue}
-              cartItems={cartItems}
-              onChangeSearchInput={onChangeSearchInput}
-              items={items}
-              onAddToCart={onAddToCart}
-              onFavourite={onFavourite}
-              isLoading={isLoading} />} />
-            <Route path="/favourites" element={<Favourites
-              onFavourite={onFavourite} />} />
-            <Route path="/orders" element={<Orders />} />
-          </Routes>
+          <Home
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            cartItems={cartItems}
+            onChangeSearchInput={onChangeSearchInput}
+            items={items}
+            onAddToCart={onAddToCart}
+            onFavourite={onFavourite}
+            isLoading={isLoading} />
+          {/* <Favourites
+            onFavourite={onFavourite} /> */}
+          {/* <Orders /> */}
         </div>
-        {cartOpened ? <Drawer items={cartItems} onClose={() => {
+        {cartOpened && <Drawer items={cartItems} onClose={() => {
           document.body.style.overflow = 'visible';
           setCartOpened(false)
-        }} onRemove={onRemoveItem} /> : null}
+        }} onRemove={onRemoveItem} />}
       </div>
-    </AppContext.Provider>
+    </AppContext.Provider >
   );
 }
 

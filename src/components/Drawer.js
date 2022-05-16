@@ -1,9 +1,14 @@
 import React from "react";
+import axios from "axios";
 
 import Info from "./Info";
+
 import AppContext from "../context";
 
-import axios from "axios";
+import order_is_done from "../assets/images/order_is_done.svg";
+import empty_cart from "../assets/images/empty_cart.svg";
+import remove_button from "../assets/images/remove_button.svg";
+import right_arrow from "../assets/images/right_arrow.svg";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -35,7 +40,7 @@ function Drawer({ onClose, onRemove, items = [] }) {
         <div className="Overlay">
             {items.length > 0 ?
                 <div className="Drawer">
-                    <h2>Cart<img onClick={onClose} className="RemoveBtn" src="images/buttonRemove.svg" alt="remove" /></h2>
+                    <h2>Cart<img onClick={onClose} className="RemoveBtn" src={remove_button} alt="remove" /></h2>
                     <div className="Items">
                         {items.map((obj, index) => (
                             <div className="CartItem" key={index}>
@@ -45,7 +50,7 @@ function Drawer({ onClose, onRemove, items = [] }) {
                                     <p>{obj.title}</p>
                                     <b>{obj.price} rub.</b>
                                 </div>
-                                <img onClick={() => onRemove(obj.id)} className="RemoveBtn" src="images/buttonRemove.svg" alt="remove" />
+                                <img onClick={() => onRemove(obj.id)} className="RemoveBtn" src={remove_button} alt="remove" />
                             </div>
                         ))}
                     </div>
@@ -62,14 +67,14 @@ function Drawer({ onClose, onRemove, items = [] }) {
                                 <b>{totalPrice * 0.05} rub.</b>
                             </li>
                         </ul>
-                        <button onClick={onClickOrder} className="GreenButton">Make order<img src="images/arrow.svg" alt="rightarrow" /></button>
+                        <button onClick={onClickOrder} className="GreenButton">Make order<img src={right_arrow} alt="right arrow" /></button>
                     </div>
                 </div> :
                 <div className="Drawer">
                     <h2>Cart</h2>
                     <Info
                         onClose={onClose}
-                        imageURL={isOrderCompleted ? "images/orderIsDone.svg" : "images/emptyCart.svg"}
+                        imageURL={isOrderCompleted ? order_is_done : empty_cart}
                         title={isOrderCompleted ? "Order is done!" : "Cart is empty"}
                         description={isOrderCompleted ? `Your order #${orderId} will be transferred to the courier delivery service` : "Add at least one pair of sneakers to make an order."}
                     />

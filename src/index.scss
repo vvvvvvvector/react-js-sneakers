@@ -1,13 +1,16 @@
-body {
-  zoom: 80%;
-  margin: 0;
+* {
+  padding: 0;
+  list-style: none; // list no dots or whatever
+  outline: none;
+  font-family: "Inter", -apple-system, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #e7f6ff;
 }
 
-* {
-  font-family: "Inter", system-ui;
+
+body {
+  zoom: 80%;
+  background-color: #e7f6ff;
 }
 
 .Wrapper {
