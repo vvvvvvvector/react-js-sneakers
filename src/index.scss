@@ -1,4 +1,5 @@
 * {
+  margin: 0;
   padding: 0;
   list-style: none; // list no dots or whatever
   outline: none;
@@ -13,126 +14,15 @@ body {
 }
 
 .Wrapper {
-  max-width: 1080px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100vw - 600px);
+  height: calc(100vh - 100px);
   background: #ffffff;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
   border-radius: 20px;
-  margin: 50px auto;
-}
-
-.Overlay {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-
-  .Drawer {
-    display: flex; // !!! 2
-    flex-direction: column; // !!! 2
-    position: absolute;
-    width: 420px;
-    height: 95vh;
-    right: 0;
-    background: #ffffff;
-    box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-
-    .Items {
-      overflow: auto;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 24px;
-      margin-bottom: 30px;
-      display: flex;
-      justify-content: space-between;
-
-      img {
-        cursor: pointer;
-      }
-    }
-
-    ul {
-      padding: 0;
-      margin-bottom: 30px;
-    }
-  }
-
-  .CartItem {
-    border: 1px solid #f3f3f3;
-    border-radius: 20px;
-    overflow: hidden; // picure > border -> hide
-    padding: 20px;
-    margin-bottom: 20px;
-
-    display: flex;
-    align-items: center;
-
-    p {
-      margin: 0;
-      font-size: 16px;
-    }
-
-    b {
-      font-size: 14px;
-    }
-
-    .CartItemImg {
-      height: 70px;
-      width: 70px;
-      background-size: contain;
-      background-position: 0 10px;
-      background-repeat: no-repeat;
-      margin-right: 20px;
-    }
-
-    .SneakerImage {
-      margin-right: 20px;
-    }
-
-    .CartItemPB {
-      margin-right: 80px;
-    }
-  }
-}
-
-.CartTotalBlock {
-  li {
-    display: flex;
-    align-items: flex-end;
-    margin-bottom: 20px;
-
-    div {
-      flex: 1; // div takes all width in row
-      height: 1px;
-      border-bottom: 1px dashed #dfdfdf;
-      position: relative; // !!
-      top: -4px; // !!
-      margin: 0 7px; // !!
-    }
-  }
-
-  // only in CartTotalBlock
-  .GreenButton {
-    position: relative;
-
-    &:hover {
-      img {
-        transform: translateX(5px);
-      }
-    }
-
-    img {
-      position: absolute;
-      right: 30px;
-      top: 20px;
-      transition: transform 0.15s ease-in-out;
-    }
-  }
 }
 
 .GreenButton {
@@ -156,8 +46,4 @@ body {
     // when i click
     background: darken(#9dd558, 5%);
   }
-}
-
-.Items {
-  flex: 1; // !!!! 2
 }

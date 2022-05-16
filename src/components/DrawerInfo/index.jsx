@@ -4,7 +4,7 @@ import Styles from './DrawerInfo.module.scss';
 
 import left_arrow from "../../assets/images/left_arrow.svg";
 
-const Info = ({ title, description, imageURL, onClose }) => {
+const DrawerInfo = ({ title, description, imageURL, onClose }) => {
     return (
         <div className={Styles.drawerInfo}>
             <img width={120} height={120} src={imageURL} alt="order/empty"/>
@@ -15,4 +15,4 @@ const Info = ({ title, description, imageURL, onClose }) => {
     );
 }
 
-export default Info;
+export default DrawerInfo;

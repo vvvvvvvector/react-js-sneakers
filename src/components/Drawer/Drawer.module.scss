@@ -1,0 +1,80 @@
+.overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    .drawer {
+        box-sizing: border-box; // padding will not increase container size
+        padding: 25px;
+        position: absolute;
+        right: 0;
+        height: 100vh;
+        width: 400px;
+        background: #ffffff;
+        box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+
+            img {
+                cursor: pointer;
+                opacity: 0.5;
+                transition: opacity 0.15s ease-in-out;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .middle {
+            margin-top: 15px;
+            overflow: auto;
+            margin-bottom: 20px;
+        }
+
+        .bottom {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            margin-top: auto;
+
+            ul {
+                margin-bottom: 20px;
+
+                li {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-end;
+
+                    div {
+                        flex: 1;
+                        border-bottom: 1px dashed #dfdfdf;
+                        margin: 0 7px;
+                    }
+                }
+            }
+
+            button {
+                position: relative;
+
+                &:hover {
+                    img {
+                        transform: translateX(5px);
+                    }
+                }
+
+                img {
+                    position: absolute;
+                    right: 30px;
+                    top: 20px;
+                    transition: transform 0.15s ease-in-out;
+                }
+            }
+        }
+    }
+}

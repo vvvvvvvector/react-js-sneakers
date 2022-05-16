@@ -100,10 +100,7 @@ function App() {
             onFavourite={onFavourite} /> */}
           {/* <Orders /> */}
         </div>
-        {cartOpened && <Drawer items={cartItems} onClose={() => {
-          document.body.style.overflow = 'visible';
-          setCartOpened(false)
-        }} onRemove={onRemoveItem} />}
+        {cartOpened && <Drawer onCartClose={() => { setCartOpened(false); document.body.style.overflow = 'visible'; }} sneakers={cartItems} onRemove={onRemoveItem} />}
       </React.Fragment>
     </AppContext.Provider >
   );
