@@ -1,0 +1,42 @@
+.drawerInfo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  h3 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    text-align: center;
+    margin: 0;
+    opacity: 0.5;
+  }
+
+  button {
+    width: 245px;
+    height: 55px;
+    position: relative;
+    margin-top: 30px;
+
+    padding-left: 27px;
+
+    &:hover {
+      img {
+        transform: translateX(-5px);
+      }
+    }
+
+    img {
+      position: absolute;
+      top: 21px;
+      left: 30px;
+      transition: transform 0.15s ease-in-out;
+    }
+  }
+}

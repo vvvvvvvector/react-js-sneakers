@@ -1,10 +1,14 @@
-import Styles from "./Card.module.scss";
-
+import React from 'react';
 import ContentLoader from "react-content-loader";
 
-import React from 'react';
-
 import AppContext from "../../context";
+
+import Styles from "./Card.module.scss";
+
+import liked_heart from "../../assets/images/liked_heart.svg";
+import unliked_heart from "../../assets/images/unliked_heart.svg";
+import checked_button from "../../assets/images/checked_button.svg";
+import unchecked_button from "../../assets/images/unchecked_button.svg";
 
 function Card({ id, title, imageURL, price, onPlus, onFavourite, isFavourite = false, isLoading = false }) {
     const { isItemAdded } = React.useContext(AppContext);
@@ -38,16 +42,16 @@ function Card({ id, title, imageURL, price, onPlus, onFavourite, isFavourite = f
                 </ContentLoader> :
                     <>
                         <div className={Styles.Favourite}>
-                            {onFavourite && <img src={isCheckedFav ? "images/liked_heart.svg" : "images/unliked_heart.svg"} alt="liked" onClick={onClickFav} />}
+                            {onFavourite && <img src={isCheckedFav ? liked_heart : unliked_heart} alt="liked" onClick={onClickFav} />}
                         </div>
-                        <img width={133} height={112} src={imageURL} alt="Sneakers" />
+                        <img width={133} height={112} src={"../../assets/images/unchecked_button.svg"} alt="Sneakers" />
                         <h5>{title}</h5>
                         <div className={Styles.CardBottom}>
                             <div className={Styles.CardBottomCost}>
                                 <span>Price:</span>
                                 <b>{price} rub.</b>
                             </div>
-                            {onPlus && <img className={Styles.AddButton} src={isItemAdded(id) ? "images/checked_button.svg" : "images/unchecked_button.svg"} onClick={onClickPlus} alt="Plus" />}
+                            {onPlus && <img className={Styles.AddButton} src={isItemAdded(id) ? checked_button : unchecked_button} onClick={onClickPlus} alt="Plus" />}
                         </div>
                     </>
             }

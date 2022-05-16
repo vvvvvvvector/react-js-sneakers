@@ -7,7 +7,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 body {
   zoom: 80%;
   background-color: #e7f6ff;
@@ -19,78 +18,6 @@ body {
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
   border-radius: 20px;
   margin: 50px auto;
-}
-
-.Content {
-  padding: 40px;
-
-  h1 {
-    margin: 0;
-  }
-}
-
-.ContentPages {
-  padding: 40px;
-
-  .SmallHeader {
-    h1 {
-      margin: 0;
-    }
-
-    img {
-      position: relative;
-      bottom: -5px;
-      margin-right: 15px;
-    }
-  }
-
-  .BackBtn {
-    opacity: 0.5;
-    cursor: pointer;
-    transition: opacity 0.15s ease-in-out;
-
-    &:hover {
-      opacity: 1;
-    }
-  }
-}
-
-.Sneakers {
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
-  left: 33px;
-}
-
-.SearchBlock {
-  border: 1px solid #f3f3f3;
-  display: flex;
-  border-radius: 10px;
-  padding: 0 15px;
-  position: relative;
-
-  .RemoveBtn {
-    position: absolute;
-    right: 0;
-    width: 18px;
-    height: 18px;
-    top: 13px;
-    right: 10px;
-  }
-
-  input {
-    border: 0;
-    padding: 13px;
-    font-size: 16px;
-    width: 200px;
-    outline: none;
-  }
-}
-
-.BeforeSearchBlock {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .Overlay {
@@ -132,46 +59,6 @@ body {
     ul {
       padding: 0;
       margin-bottom: 30px;
-    }
-  }
-
-  .EmptyCart {
-    margin-top: 325px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    h3 {
-      margin-top: 30px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      text-align: center;
-      margin: 0;
-      opacity: 0.5;
-    }
-
-    button {
-      width: 245px;
-      height: 55px;
-      position: relative;
-      margin-top: 30px;
-
-      padding-left: 27px; // moving content in the bottom
-
-      &:hover {
-        img {
-          transform: translateX(-5px);
-        }
-      }
-
-      img {
-        position: absolute;
-        top: 21px;
-        left: 30px;
-        transition: transform 0.15s ease-in-out;
-      }
     }
   }
 
@@ -271,55 +158,6 @@ body {
   }
 }
 
-.RemoveBtn {
-  opacity: 0.5;
-  cursor: pointer;
-  transition: opacity 0.15s ease-in-out;
-
-  &:hover {
-    opacity: 1;
-  }
-}
-
 .Items {
   flex: 1; // !!!! 2
-}
-
-.EmptyFavourites {
-  padding: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  h2 {
-    margin-bottom: 10px;
-  }
-
-  p {
-    opacity: 0.5;
-    text-align: center;
-    margin: 0;
-  }
-
-  button {
-    width: 245px;
-    height: 55px;
-    position: relative;
-    margin-top: 60px;
-
-    padding-left: 27px; // moving content in the bottom
-
-    &:hover {
-      img {
-        transform: translateX(-5px);
-      }
-    }
-
-    img {
-      position: absolute;
-      top: 21px;
-      left: 30px;
-      transition: transform 0.15s ease-in-out;
-    }
-  }
 }

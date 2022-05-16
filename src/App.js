@@ -80,7 +80,7 @@ function App() {
 
   return (
     <AppContext.Provider value={{ items, cartItems, favourites, isItemAdded, setCartOpened, setCartItems }}>
-      <div className="Container">
+      <React.Fragment>
         <div className="Wrapper">
           <Header onClickCart={() => {
             setCartOpened(true);
@@ -104,7 +104,7 @@ function App() {
           document.body.style.overflow = 'visible';
           setCartOpened(false)
         }} onRemove={onRemoveItem} />}
-      </div>
+      </React.Fragment>
     </AppContext.Provider >
   );
 }
