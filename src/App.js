@@ -16,7 +16,7 @@ function App() {
   const [favourites, setFavourites] = React.useState([]);
   const [cartOpened, setCartOpened] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(true);
-  const [searchValue, setSearchValue] = React.useState(''); 
+  const [searchValue, setSearchValue] = React.useState('');
 
   React.useEffect(() => {
     async function FetchData() {
