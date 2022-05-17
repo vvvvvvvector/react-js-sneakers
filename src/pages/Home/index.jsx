@@ -4,9 +4,6 @@ import Card from "../../components/Card"; // variable Card just store code from 
 
 import Styles from "./Home.module.scss";
 
-import search_logo from "../../images/search_logo.svg";
-import remove_button from "../../images/remove_button.svg";
-
 function Home({ searchValue, setSearchValue, onChangeSearchInput, items, onAddToCart, onFavourite, isLoading }) {
   const renderItems = () => {
     const filteredItems = items.filter((item) =>
@@ -25,8 +22,8 @@ function Home({ searchValue, setSearchValue, onChangeSearchInput, items, onAddTo
           {searchValue ? `Search for: "${searchValue}"` : "All sneakers"}
         </h1>
         <div className={Styles.searchBlock}>
-          <img src={search_logo} alt="Search" />
-          {searchValue && <img onClick={() => setSearchValue("")} className={Styles.removeButton} src={remove_button} alt="clear" />}
+          <img src={process.env.PUBLIC_URL + "/images/search_logo.svg"} alt="Search" />
+          {searchValue && <img onClick={() => setSearchValue("")} className={Styles.removeButton} src={process.env.PUBLIC_URL + "/images/remove_button.svg"} alt="clear" />}
           <input onChange={onChangeSearchInput} value={searchValue} placeholder="Search..." />
         </div>
       </div>

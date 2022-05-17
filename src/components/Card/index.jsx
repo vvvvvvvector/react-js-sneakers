@@ -5,11 +5,6 @@ import AppContext from "../../context";
 
 import Styles from "./Card.module.scss";
 
-import liked_heart from "../../images/liked_heart.svg";
-import unliked_heart from "../../images/unliked_heart.svg";
-import checked_button from "../../images/checked_button.svg";
-import unchecked_button from "../../images/unchecked_button.svg";
-
 function Card({ id, title, imageURL, price, onPlus, onFavourite, isFavourite = false, isLoading = false }) {
     const { isItemAdded } = React.useContext(AppContext);
     const [isCheckedFav, setIsCheckedFav] = React.useState(isFavourite);
@@ -23,8 +18,6 @@ function Card({ id, title, imageURL, price, onPlus, onFavourite, isFavourite = f
     const onClickPlus = () => {
         onPlus(obj);
     };
-
-    console.log(imageURL);
 
     return (
         <div className={Styles.Card}>
@@ -44,16 +37,16 @@ function Card({ id, title, imageURL, price, onPlus, onFavourite, isFavourite = f
                 </ContentLoader> :
                     <>
                         <div className={Styles.Favourite}>
-                            {onFavourite && <img src={isCheckedFav ? liked_heart : unliked_heart} alt="liked" onClick={onClickFav} />}
+                            {onFavourite && <img src={isCheckedFav ? process.env.PUBLIC_URL + "/images/liked_heart.svg" : process.env.PUBLIC_URL + "/images/unliked_heart.svg"} alt="liked" onClick={onClickFav} />}
                         </div>
-                        <img width={133} height={112} src={require("../../images/sneakers/3.jpg")} alt="Sneakers" />
+                        <img width={133} height={112} src={process.env.PUBLIC_URL + imageURL} alt="Sneakers" />
                         <h5>{title}</h5>
                         <div className={Styles.CardBottom}>
                             <div className={Styles.CardBottomCost}>
                                 <span>Price:</span>
                                 <b>{price} rub.</b>
                             </div>
-                            {onPlus && <img className={Styles.AddButton} src={isItemAdded(id) ? checked_button : unchecked_button} onClick={onClickPlus} alt="Plus" />}
+                            {onPlus && <img className={Styles.AddButton} src={isItemAdded(id) ? process.env.PUBLIC_URL + "/images/checked_button.svg" : process.env.PUBLIC_URL + "/images/unchecked_button.svg"} onClick={onClickPlus} alt="Plus" />}
                         </div>
                     </>
             }

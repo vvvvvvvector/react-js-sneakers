@@ -5,10 +5,6 @@ import DrawerInfo from "../DrawerInfo";
 
 import Styles from "./Drawer.module.scss";
 
-import close_button from "../../images/remove_button.svg";
-import right_arrow from "../../images/right_arrow.svg";
-import empty_cart from "../../images/empty_cart.svg";
-
 function Drawer({ onCartClose, onRemove, sneakers = [] }) {
     const totalPrice = sneakers.reduce((sum, obj) => obj.price + sum, 0);
 
@@ -17,7 +13,7 @@ function Drawer({ onCartClose, onRemove, sneakers = [] }) {
             <div className={Styles.drawer}>
                 <div className={Styles.top}>
                     <h2>Cart</h2>
-                    {sneakers.length > 0 && <img onClick={onCartClose} src={close_button} alt="close button" />}
+                    {sneakers.length > 0 && <img onClick={onCartClose} src={process.env.PUBLIC_URL + "/images/remove_button.svg"} alt="close button" />}
                 </div>
                 {
                     sneakers.length > 0 ? (<React.Fragment>
@@ -39,12 +35,12 @@ function Drawer({ onCartClose, onRemove, sneakers = [] }) {
                                     <b>{(totalPrice * 0.05).toFixed(3)} rub.</b>
                                 </li>
                             </ul>
-                            <button className="GreenButton">Make order<img src={right_arrow} alt="right arrow" /></button>
+                            <button className="GreenButton">Make order<img src={process.env.PUBLIC_URL + "/images/right_arrow.svg"} alt="right arrow" /></button>
                         </div>
                     </React.Fragment>) :
                         (<DrawerInfo
                             title={"Cart is empty"}
-                            imageURL={empty_cart}
+                            imageURL={process.env.PUBLIC_URL + "/images/empty_cart.svg"}
                             description={"Add at least one pair of sneakers to make an order."}
                             onClose={onCartClose}
                         />)

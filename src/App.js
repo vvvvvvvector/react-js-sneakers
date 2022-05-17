@@ -16,7 +16,7 @@ function App() {
   const [favourites, setFavourites] = React.useState([]);
   const [cartOpened, setCartOpened] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(true);
-  const [searchValue, setSearchValue] = React.useState('');  // controlled input because of {value} in inupt
+  const [searchValue, setSearchValue] = React.useState(''); 
 
   React.useEffect(() => {
     async function FetchData() {
@@ -80,7 +80,7 @@ function App() {
 
   return (
     <AppContext.Provider value={{ items, cartItems, favourites, isItemAdded, setCartOpened, setCartItems }}>
-      <React.Fragment>
+      <>
         <div className="Wrapper">
           <Header onClickCart={() => {
             setCartOpened(true);
@@ -101,7 +101,7 @@ function App() {
           {/* <Orders /> */}
         </div>
         {cartOpened && <Drawer onCartClose={() => { setCartOpened(false); document.body.style.overflow = 'visible'; }} sneakers={cartItems} onRemove={onRemoveItem} />}
-      </React.Fragment>
+      </>
     </AppContext.Provider >
   );
 }

@@ -7,9 +7,6 @@ import AppContext from "../../context";
 
 import Styles from "./Favourites.module.scss"
 
-import sad_smile from "../../images/sad_smile.jpg";
-import back_button from "../../images/back_button.svg";
-
 function Favourites({ onFavourite, onAddToCart }) {
   const { favourites } = React.useContext(AppContext);
 
@@ -17,7 +14,7 @@ function Favourites({ onFavourite, onAddToCart }) {
     <div className={Styles.favouritesContent}>
       <div className={Styles.pageHeader}>
         <h1>
-          <img width={35} height={35} className={Styles.backButton} src={back_button} alt="goBackButton" />
+          <img width={35} height={35} className={Styles.backButton} src={process.env.PUBLIC_URL + "/images/back_button.svg"} alt="goBackButton" />
           Favourites
         </h1>
       </div>
@@ -28,7 +25,7 @@ function Favourites({ onFavourite, onAddToCart }) {
       </div>
     </div>
   ) : (
-    <EmptyPageInfo imageURL={sad_smile} title="There are no favourites :(" description="You haven't added anything to your favourites" />
+    <EmptyPageInfo imageURL={process.env.PUBLIC_URL + "/images/sad_smile.jpg"} title="There are no favourites :(" description="You haven't added anything to your favourites" />
   );
 }
 

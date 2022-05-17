@@ -6,9 +6,6 @@ import Card from "../../components/Card";
 
 import Styles from "./Orders.module.scss";
 
-import broke_smile from "../../images/broke_smile.jpg";
-import back_button from "../../images/back_button.svg";
-
 function Orders() {
     const [orders, setOrders] = React.useState([]);
 
@@ -23,7 +20,7 @@ function Orders() {
         <div className={Styles.ordersContent}>
             <div className={Styles.pageHeader}>
                 <h1>
-                    <img width={35} height={35} className={Styles.backButton} src={back_button} alt="goBackButton"
+                    <img width={35} height={35} className={Styles.backButton} src={process.env.PUBLIC_URL + "/images/back_button.svg"} alt="goBackButton"
                     />
                     Orders
                 </h1>
@@ -35,7 +32,7 @@ function Orders() {
             </div>
         </div>
     ) : (
-        <EmptyPageInfo imageURL={broke_smile} title="You don't have orders" description="Make at least one order" />
+        <EmptyPageInfo imageURL={process.env.PUBLIC_URL + "/images/broke_smile.jpg"} title="You don't have orders" description="Make at least one order" />
     );
 }
 

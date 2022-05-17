@@ -1,7 +1,5 @@
 import Styles from "./EmptyPageInfo.module.scss";
 
-import left_arrow from "../../images/left_arrow.svg";
-
 const EmptyPageInfo = ({ title, description, imageURL }) => {
     return (
         <div className={Styles.emptyPage}>
@@ -10,7 +8,7 @@ const EmptyPageInfo = ({ title, description, imageURL }) => {
             <p>{description}</p>
             <button className="GreenButton">
                 Home page
-                <img src={left_arrow} alt="left arrow" />
+                <img src={process.env.PUBLIC_URL + "/images/left_arrow.svg"} alt="left arrow" />
             </button>
         </div>
     );
