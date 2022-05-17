@@ -4,8 +4,8 @@ import Card from "../../components/Card"; // variable Card just store code from 
 
 import Styles from "./Home.module.scss";
 
-import search_logo from "../../assets/images/search_logo.svg";
-import remove_button from "../../assets/images/remove_button.svg";
+import search_logo from "../../images/search_logo.svg";
+import remove_button from "../../images/remove_button.svg";
 
 function Home({ searchValue, setSearchValue, onChangeSearchInput, items, onAddToCart, onFavourite, isLoading }) {
   const renderItems = () => {

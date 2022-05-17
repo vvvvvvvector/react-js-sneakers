@@ -6,8 +6,8 @@ import Card from "../../components/Card";
 
 import Styles from "./Orders.module.scss";
 
-import broke_smile from "../../assets/images/broke_smile.jpg";
-import back_button from "../../assets/images/back_button.svg";
+import broke_smile from "../../images/broke_smile.jpg";
+import back_button from "../../images/back_button.svg";
 
 function Orders() {
     const [orders, setOrders] = React.useState([]);

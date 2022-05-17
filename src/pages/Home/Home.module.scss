@@ -2,10 +2,11 @@
     padding: 40px;
 
     .sneakers {
-        display: flex;
-        flex-wrap: wrap;
-        position: relative;
-        left: 33px;
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 202px); 
+        grid-gap: 30px; 
+        justify-content: space-between;
     }
 
     .beforeSearchBlock {

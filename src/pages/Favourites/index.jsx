@@ -7,8 +7,8 @@ import AppContext from "../../context";
 
 import Styles from "./Favourites.module.scss"
 
-import sad_smile from "../../assets/images/sad_smile.jpg";
-import back_button from "../../assets/images/back_button.svg";
+import sad_smile from "../../images/sad_smile.jpg";
+import back_button from "../../images/back_button.svg";
 
 function Favourites({ onFavourite, onAddToCart }) {
   const { favourites } = React.useContext(AppContext);

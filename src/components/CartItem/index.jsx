@@ -2,7 +2,7 @@ import React from "react";
 
 import Styles from "./CartItem.module.scss";
 
-import remove_button from "../../assets/images/remove_button.svg";
+import remove_button from "../../images/remove_button.svg";
 
 function CartItem({ sneaker, onRemove }) {
     return (

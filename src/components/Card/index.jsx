@@ -5,10 +5,10 @@ import AppContext from "../../context";
 
 import Styles from "./Card.module.scss";
 
-import liked_heart from "../../assets/images/liked_heart.svg";
-import unliked_heart from "../../assets/images/unliked_heart.svg";
-import checked_button from "../../assets/images/checked_button.svg";
-import unchecked_button from "../../assets/images/unchecked_button.svg";
+import liked_heart from "../../images/liked_heart.svg";
+import unliked_heart from "../../images/unliked_heart.svg";
+import checked_button from "../../images/checked_button.svg";
+import unchecked_button from "../../images/unchecked_button.svg";
 
 function Card({ id, title, imageURL, price, onPlus, onFavourite, isFavourite = false, isLoading = false }) {
     const { isItemAdded } = React.useContext(AppContext);
@@ -23,6 +23,8 @@ function Card({ id, title, imageURL, price, onPlus, onFavourite, isFavourite = f
     const onClickPlus = () => {
         onPlus(obj);
     };
+
+    console.log(imageURL);
 
     return (
         <div className={Styles.Card}>
@@ -44,7 +46,7 @@ function Card({ id, title, imageURL, price, onPlus, onFavourite, isFavourite = f
                         <div className={Styles.Favourite}>
                             {onFavourite && <img src={isCheckedFav ? liked_heart : unliked_heart} alt="liked" onClick={onClickFav} />}
                         </div>
-                        <img width={133} height={112} src={"../../assets/images/unchecked_button.svg"} alt="Sneakers" />
+                        <img width={133} height={112} src={require("../../images/sneakers/3.jpg")} alt="Sneakers" />
                         <h5>{title}</h5>
                         <div className={Styles.CardBottom}>
                             <div className={Styles.CardBottomCost}>

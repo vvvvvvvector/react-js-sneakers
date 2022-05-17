@@ -2,7 +2,7 @@ import React from "react";
 
 import Styles from './DrawerInfo.module.scss';
 
-import left_arrow from "../../assets/images/left_arrow.svg";
+import left_arrow from "../../images/left_arrow.svg";
 
 const DrawerInfo = ({ title, description, imageURL, onClose }) => {
     return (

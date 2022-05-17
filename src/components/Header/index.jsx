@@ -4,10 +4,10 @@ import AppContext from "../../context";
 
 import Styles from "./Header.module.scss";
 
-import sneakers_logo from "../../assets/images/sneakers_logo.svg";
-import cart_logo from "../../assets/images/cart_logo.svg";
-import heart_logo from "../../assets/images/heart_logo.svg";
-import user_logo from "../../assets/images/user_logo.svg";
+import sneakers_logo from "../../images/sneakers_logo.svg";
+import cart_logo from "../../images/cart_logo.svg";
+import heart_logo from "../../images/heart_logo.svg";
+import user_logo from "../../images/user_logo.svg";
 
 function Header(props) {
     const { cartItems } = React.useContext(AppContext);

@@ -5,9 +5,9 @@ import DrawerInfo from "../DrawerInfo";
 
 import Styles from "./Drawer.module.scss";
 
-import close_button from "../../assets/images/remove_button.svg";
-import right_arrow from "../../assets/images/right_arrow.svg";
-import empty_cart from "../../assets/images/empty_cart.svg";
+import close_button from "../../images/remove_button.svg";
+import right_arrow from "../../images/right_arrow.svg";
+import empty_cart from "../../images/empty_cart.svg";
 
 function Drawer({ onCartClose, onRemove, sneakers = [] }) {
     const totalPrice = sneakers.reduce((sum, obj) => obj.price + sum, 0);
