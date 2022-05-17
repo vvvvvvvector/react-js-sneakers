@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Route, Routes } from 'react-router-dom';
 
 import Header from './components/Header';
 import Drawer from './components/Drawer';
@@ -87,18 +88,20 @@ function App() {
             document.body.style.overflow = 'hidden';
           }} />
 
-          <Home
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
-            cartItems={cartItems}
-            onChangeSearchInput={onChangeSearchInput}
-            items={items}
-            onAddToCart={onAddToCart}
-            onFavourite={onFavourite}
-            isLoading={isLoading} />
-          {/* <Favourites
-            onFavourite={onFavourite} /> */}
-          {/* <Orders /> */}
+          <Routes>
+            <Route exact path="/" element={<Home
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+              cartItems={cartItems}
+              onChangeSearchInput={onChangeSearchInput}
+              items={items}
+              onAddToCart={onAddToCart}
+              onFavourite={onFavourite}
+              isLoading={isLoading} />} />
+            <Route path='/favourites' element={<Favourites
+              onFavourite={onFavourite} />} />
+            <Route path='/orders' element={<Orders />} />
+          </Routes>
         </div>
         {cartOpened && <Drawer onCartClose={() => { setCartOpened(false); document.body.style.overflow = 'visible'; }} sneakers={cartItems} onRemove={onRemoveItem} />}
       </>

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 import EmptyPageInfo from "../../components/EmptyPageInfo";
 import Card from "../../components/Card";
@@ -20,8 +21,9 @@ function Orders() {
         <div className={Styles.ordersContent}>
             <div className={Styles.pageHeader}>
                 <h1>
-                    <img width={35} height={35} className={Styles.backButton} src={process.env.PUBLIC_URL + "/images/back_button.svg"} alt="goBackButton"
-                    />
+                    <Link to="/">
+                        <img width={35} height={35} className={Styles.backButton} src={process.env.PUBLIC_URL + "/images/back_button.svg"} alt="goBackButton" />
+                    </Link>
                     Orders
                 </h1>
             </div>

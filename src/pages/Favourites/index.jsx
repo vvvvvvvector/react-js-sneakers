@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 import Card from "../../components/Card";
 import EmptyPageInfo from "../../components/EmptyPageInfo";
@@ -14,7 +15,9 @@ function Favourites({ onFavourite, onAddToCart }) {
     <div className={Styles.favouritesContent}>
       <div className={Styles.pageHeader}>
         <h1>
-          <img width={35} height={35} className={Styles.backButton} src={process.env.PUBLIC_URL + "/images/back_button.svg"} alt="goBackButton" />
+          <Link to="/">
+            <img width={35} height={35} className={Styles.backButton} src={process.env.PUBLIC_URL + "/images/back_button.svg"} alt="goBackButton" />
+          </Link>
           Favourites
         </h1>
       </div>

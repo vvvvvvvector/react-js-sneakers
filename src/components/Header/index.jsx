@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import AppContext from "../../context";
 
@@ -23,12 +24,16 @@ function Header(props) {
                     <img width={18} height={18} src={process.env.PUBLIC_URL + "/images/cart_logo.svg"} alt="cart logo" />
                     <span>{totalPrice} rub.</span>
                 </li>
-                <li className={Styles.Heart}>
-                    <img width={21} height={19} src={process.env.PUBLIC_URL + "/images/heart_logo.svg"} alt="heart logo" />
-                </li>
-                <li className={Styles.Logo}>
-                    <img width={20} height={20} src={process.env.PUBLIC_URL + "/images/user_logo.svg"} alt="user logo" />
-                </li>
+                <Link to="/favourites">
+                    <li className={Styles.Heart}>
+                        <img width={21} height={19} src={process.env.PUBLIC_URL + "/images/heart_logo.svg"} alt="heart logo" />
+                    </li>
+                </Link>
+                <Link to="/orders">
+                    <li className={Styles.Logo}>
+                        <img width={20} height={20} src={process.env.PUBLIC_URL + "/images/user_logo.svg"} alt="user logo" />
+                    </li>
+                </Link>
             </ul>
         </header>
     );
