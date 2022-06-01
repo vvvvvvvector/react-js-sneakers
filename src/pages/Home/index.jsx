@@ -27,7 +27,7 @@ function Home({ searchValue, setSearchValue, onChangeSearchInput, items, onAddTo
           <input onChange={onChangeSearchInput} value={searchValue} placeholder="Search..." />
         </div>
       </div>
-      <div className={Styles.sneakers}>{renderItems()}</div>
+      <div className="sneakers">{renderItems()}</div>
     </div>
   );
 }

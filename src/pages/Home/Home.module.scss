@@ -1,14 +1,6 @@
 .content {
     padding: 40px;
 
-    .sneakers {
-        margin-top: 30px;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, 202px); 
-        grid-gap: 30px; 
-        justify-content: space-between;
-    }
-
     .beforeSearchBlock {
         display: flex;
         align-items: center;
@@ -22,6 +14,10 @@
         padding: 0 15px;
         align-items: center;
         position: relative;
+
+        &:focus-within {
+            border-color: darken(#f3f3f3, 7%);
+        }
 
         .removeButton {
             position: absolute;

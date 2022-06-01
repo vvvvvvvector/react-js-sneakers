@@ -21,7 +21,7 @@ function Favourites({ onFavourite, onAddToCart }) {
           Favourites
         </h1>
       </div>
-      <div className={Styles.sneakers}>
+      <div className="sneakers">
         {favourites.map((item, index) => (
           <Card key={index} isFavourite={true} onFavourite={onFavourite} onPlus={onAddToCart} {...item} />
         ))}

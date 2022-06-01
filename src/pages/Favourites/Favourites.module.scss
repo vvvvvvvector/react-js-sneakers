@@ -22,12 +22,4 @@
             opacity: 1;
         }
     }
-
-    .sneakers {
-        margin-top: 30px;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, 202px);
-        grid-gap: 30px;
-        justify-content: space-between;
-    }
 }

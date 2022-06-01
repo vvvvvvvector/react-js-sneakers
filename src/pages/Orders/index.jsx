@@ -27,7 +27,7 @@ function Orders() {
                     Orders
                 </h1>
             </div>
-            <div className={Styles.sneakers}>
+            <div className="sneakers">
                 {orders.map((item, index) => (
                     <Card key={index} {...item} />
                 ))}
